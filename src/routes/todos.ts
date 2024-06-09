@@ -27,6 +27,27 @@ router.post('/index', async function(req: any, res: any) {
     res.sendStatus(500);
   }
 });
+/**
+* 
+* @param
+*
+* @return
+*/ 
+router.post('/get', async function(req: any, res: any) {
+  try {
+    let resulte = {};
+    const body = req.body; 
+    if(body){
+console.log(body);
+      resulte = await LibTodo.getItem(Number(body.id));
+    }
+    //console.log(resulte);
+    res.json(resulte);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
 /******************************** 
 *  todos Show
 *********************************/
